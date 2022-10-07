@@ -1,11 +1,20 @@
-/*-- criação da tabela prédios
-create table predios (
+
+create table elencos (
 	codigo serial primary key, 
-	nome varchar(40) not null, 
-	descricao varchar(40) not null, 
-	sigla varchar(4) not null 	
+	temporada varchar(40) not null, 
+	treinador varchar(40) not null, 
+	folha float(10) not null 	
 );
 
+create table jogadores (
+	codigo serial primary key, 
+	nome varchar(40) not null, 
+	numero integer not null, 
+	posicao varchar(40) not null, 
+	elenco integer not null, 
+	foreign key (elenco) references elencos (codigo)
+);
+/*-- 
 -- inserindo registros na tabela prédios
 insert into predios (nome, descricao, sigla) 
 values ('Predio 5', 'Predio da Computação', 'P5')
