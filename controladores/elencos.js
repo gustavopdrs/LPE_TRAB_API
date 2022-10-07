@@ -64,7 +64,7 @@ const deleteElenco = (request, response) => {
         if (error || results.rowCount == 0){
             return response.status(400).json({
                 status : 'error', 
-                message : 'Erro ao remover o elenco: ' + 
+                message : 'Erro ao remover o elenco:Remova os jogadores dele primeiro! ' + 
                 (error ? error :'Não removeu nenhuma linha')
             })
         }
