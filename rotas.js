@@ -1,25 +1,25 @@
 const { Router } = require('express');
 
-const controlePredios = require('./controladores/predios');
-const controleSalas = require("./controladores/salas");
+const controleElencos = require('./controladores/elencos');
+const controleJogadores = require("./controladores/jogadores");
 const rotas = new Router();
 
-rotas.route('/predios')
-     .get(controlePredios.getPredios)
-     .post(controlePredios.addPredio)
-     .put(controlePredios.updatePredio)
+rotas.route('/elencos')
+     .get(controleElencos.getElencos)
+     .post(controleElencos.addElenco)
+     .put(controleElencos.updateElenco)
 
-rotas.route('/predios/:codigo')
-     .get(controlePredios.getPredioPorCodigo)
-     .delete(controlePredios.deletePredio)
+rotas.route('/elencos/:codigo')
+     .get(controleElencos.getElencoPorCodigo)
+     .delete(controleElencos.deleteElenco)
 
-rotas.route('/salas')
-   .get(controleSalas.getSalas)
-   .post(controleSalas.addSala)
-   .put(controleSalas.updateSala)
+rotas.route('/jogadores')
+   .get(controleJogadores.getJogadores)
+   .post(controleJogadores.addJogador)
+   .put(controleJogadores.updateJogador)
 
-rotas.route('/salas/:codigo')
-   .get(controleSalas.getSalaPorCodigo)
-   .delete(controleSalas.deleteSala)
+rotas.route('/jogadores/:codigo')
+   .get(controleJogadores.getJogadorPorCodigo)
+   .delete(controleJogadores.deleteJogador)
 
 module.exports = rotas;

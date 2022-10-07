@@ -1,4 +1,4 @@
--- criação da tabela prédios
+/*-- criação da tabela prédios
 create table predios (
 	codigo serial primary key, 
 	nome varchar(40) not null, 
