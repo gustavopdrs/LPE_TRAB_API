@@ -58,9 +58,6 @@ const updateElenco = (request, response) => {
 
 const deleteElenco = (request, response) => {
     const codigo = parseInt(request.params.codigo);
-    const temporada = request.params.temporada;
-    pool.query(`DELETE FROM jogadores where elenco = $1`,
-    [temporada])
     pool.query(`DELETE FROM elencos WHERE codigo = $1`,
     [codigo],
     (error, results) => {
