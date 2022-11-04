@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const rotas = require('./rotas');
 
+require("dotenv-safe").config()
+const jwt = require('jsonwebtoken')
+
 const app = express();
 
 app.use(express.json());
@@ -12,3 +15,4 @@ app.use(rotas);
 app.listen(process.env.PORT || 3002, () => {
     console.log('Servidor da API rodando...');
 });
+

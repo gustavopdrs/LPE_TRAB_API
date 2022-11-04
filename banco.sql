@@ -1,5 +1,5 @@
 
-create table elencos (
+/*create table elencos (
 	codigo serial primary key, 
 	temporada varchar(40) not null, 
 	treinador varchar(40) not null, 

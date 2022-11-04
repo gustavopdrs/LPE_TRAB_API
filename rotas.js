@@ -1,25 +1,29 @@
 const { Router } = require('express');
-
+require('./index')
 const controleElencos = require('./controladores/elencos');
+const seguranca = require('./controladores/seguranca')
 const controleJogadores = require("./controladores/jogadores");
 const rotas = new Router();
 
 rotas.route('/elencos')
-     .get(controleElencos.getElencos)
-     .post(controleElencos.addElenco)
-     .put(controleElencos.updateElenco)
+     .get(seguranca.verificaJWT, controleElencos.getElencos)
+     .post(seguranca.verificaJWT, controleElencos.addElenco)
+     .put(seguranca.verificaJWT, controleElencos.updateElenco)
 
 rotas.route('/elencos/:codigo')
-     .get(controleElencos.getElencoPorCodigo)
-     .delete(controleElencos.deleteElenco)
+     .get(seguranca.verificaJWT, controleElencos.getElencoPorCodigo)
+     .delete(seguranca.verificaJWT, controleElencos.deleteElenco)
 
 rotas.route('/jogadores')
-   .get(controleJogadores.getJogadores)
-   .post(controleJogadores.addJogador)
-   .put(controleJogadores.updateJogador)
+   .get(seguranca.verificaJWT, controleJogadores.getJogadores)
+   .post(seguranca.verificaJWT, controleJogadores.addJogador)
+   .put(seguranca.verificaJWT, controleJogadores.updateJogador)
 
 rotas.route('/jogadores/:codigo')
-   .get(controleJogadores.getJogadorPorCodigo)
-   .delete(controleJogadores.deleteJogador)
+   .get(seguranca.verificaJWT, controleJogadores.getJogadorPorCodigo)
+   .delete(seguranca.verificaJWT, controleJogadores.deleteJogador)
 
+rotas.route("/login")
+   .post(seguranca.login) 
+   
 module.exports = rotas;
